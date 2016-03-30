@@ -1,19 +1,23 @@
-#include <iostream>
 #include "chesspiece.h"
-#include <QString>
-using namespace std;
+
 
 QString position;
-int value;
+Colour colour;
+Value value;
+
 
 ChessPiece::ChessPiece()
 {
-    position = "dicks";
-    cout << "dicks" << endl;
+
+    position = NO_POSITION;
+    colour = COLOURLESS;
+    value = WORTHLESS;
+
 }
+
 
 QString ChessPiece::getPosition()
 {
-    cout << "dicks 2";
+    std::cout << "dicks" << std::endl;
     return position;
 }

@@ -1,10 +1,8 @@
-// Definitions
 #ifndef BOARD_H
 #define BOARD_H
 
 #define LENGTH 7
 
-// Imports
 #include <QList>
 #include <QString>
 #include <QDebug>
@@ -13,19 +11,25 @@
 
 
 class Board
+
 {
+
 public:
+
     Board();
 
+
 private:
-    QList<QList<QString>> board;
-    QList<ChessPiece> initialPosition;
+
+    QList<QList<ChessPiece>> board;
+    QList<ChessPiece> pieces;
     ChessPiece whiteCaptured;
     ChessPiece blackCaptured;
 
-    void CreateWhitePieces();
-    void CreateBlackPieces();
+    void PieceCheck();
+
 
 };
+
 
 #endif // BOARD_H
