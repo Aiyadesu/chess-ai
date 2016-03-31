@@ -13,6 +13,7 @@ public:
     King();
     King(Colour colour);
     QString getPosition();
+    King* getPiece();
 
 
 private:

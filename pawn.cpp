@@ -19,3 +19,9 @@ Pawn::Pawn(Colour colour)
     value = PAWN;
 
 }
+
+Pawn* Pawn::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}

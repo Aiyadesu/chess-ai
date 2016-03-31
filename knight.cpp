@@ -19,3 +19,9 @@ Knight::Knight(Colour colour)
     value = KNIGHT;
 
 }
+
+Knight* Knight::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}

@@ -12,7 +12,7 @@ public:
 
     Bishop();
     Bishop(Colour colour);
-    QString getPosition();
+    Bishop* getPiece();
 
 
 private:

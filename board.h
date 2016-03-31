@@ -21,12 +21,12 @@ public:
 
 private:
 
-    QList<QList<ChessPiece>> board;
-    QList<ChessPiece> pieces;
-    ChessPiece whiteCaptured;
-    ChessPiece blackCaptured;
+    QList<ChessPiece*> board;
+    //QList<ChessPiece*> whitePieces;
+    //QList<ChessPiece*> blackPieces;
 
-    void PieceCheck();
+    // Support functions
+    int IndexAt(int row, int column);
 
 
 };

@@ -19,3 +19,9 @@ King::King(Colour colour)
     value = KING;
 
 }
+
+King* King::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}

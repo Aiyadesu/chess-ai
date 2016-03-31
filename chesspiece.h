@@ -8,9 +8,9 @@
 
 enum Colour {
 
-    COLOURLESS = 0,
-    WHITE = 1,
-    BLACK = 2
+    COLOURLESS = -1,
+    WHITE = 0,
+    BLACK = 1
 
 };
 
@@ -36,17 +36,19 @@ public:
     ChessPiece();
     ChessPiece(Colour colour);
     //virtual QString capture() = 0;
-    QString getPosition();
+    int getPosition();
+    Colour getColour();
+    Value getValue();
+    virtual ChessPiece* getPiece();
+    void setPosition(int pRow, int pColumn);
     //virtual QString setPosition() = 0;
-    QString NO_POSITION = "Not placed on board yet!";
-
+    const int NO_POSITION = -1;
 
 private:
 
-    QString position;
+    int position;
     Colour colour;
     Value value;
-    //static int numChessPieces;
 
     //TODO: ADD STATIC MEMBERS TO OTHER CHESS PIECES
     // AND CREATE AN ID MEMBER TOO BASED OFF THE STATIC MEMBER

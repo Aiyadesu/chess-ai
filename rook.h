@@ -13,11 +13,13 @@ public:
     Rook();
     Rook(Colour colour);
     QString getPosition();
+    Rook* getPiece();
+    void getColour();
 
 
 private:
 
-    QString position;
+    int position;
     Colour colour;
     Value value;
 

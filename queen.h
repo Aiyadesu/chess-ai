@@ -13,6 +13,7 @@ public:
     Queen();
     Queen(Colour colour);
     QString getPosition();
+    Queen* getPiece();
 
 
 private:

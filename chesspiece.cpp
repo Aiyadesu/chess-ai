@@ -1,7 +1,7 @@
 #include "chesspiece.h"
 
 
-QString position;
+int position;
 Colour colour;
 Value value;
 
@@ -16,8 +16,41 @@ ChessPiece::ChessPiece()
 }
 
 
-QString ChessPiece::getPosition()
+int ChessPiece::getPosition()
 {
-    std::cout << "dicks" << std::endl;
+
     return position;
+
+}
+
+
+Colour ChessPiece::getColour()
+{
+
+    return colour;
+
+}
+
+
+Value ChessPiece::getValue()
+{
+
+    return value;
+
+}
+
+
+ChessPiece* ChessPiece::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}
+
+
+void ChessPiece::setPosition(int pRow, int pColumn)
+{
+    int row = pRow + 1;
+    int column = pColumn +1;
+    position = (8 * row) + column - 1;
+
 }

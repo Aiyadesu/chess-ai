@@ -13,6 +13,7 @@ public:
     Knight();
     Knight(Colour colour);
     QString getPosition();
+    Knight* getPiece();
 
 
 private:

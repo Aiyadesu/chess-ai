@@ -19,3 +19,9 @@ Queen::Queen(Colour colour)
     value = QUEEN;
 
 }
+
+Queen* Queen::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}

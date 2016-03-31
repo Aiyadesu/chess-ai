@@ -10,18 +10,12 @@
 using namespace std;
 
 // Board Data Structures
-QList<QList<ChessPiece>> board;
-QList<ChessPiece> * rowPtr;
+QList<ChessPiece*> board;
 
 // Piece Data Structures
-QList<ChessPiece> whitePieces;
-QList<ChessPiece> blackPieces;
-QList<ChessPiece> * colourPtr;
+//QList<ChessPiece*> whitePieces;
+//QList<ChessPiece*> blackPieces;
 
-ChessPiece * piecePtr;
-
-// Column Conversion variable
-QString columnStr = "ABCDEFGH";
 
 /*
  * Pre-condition: A new board is required for a game of Chess!
@@ -36,154 +30,65 @@ QString columnStr = "ABCDEFGH";
  * and a King.
  *
  * Note: The Board will be positioned from "White's Perspective".
- * Therefore, A1 is where the White Rook will initially be placed.
+ * Therefore, A1 (board[0]) is where the White Rook will initially be placed.
  */
 Board::Board()
 {
     /* Initialises the Board */
-    // Start by creating eight rows one by one
-    // Eight "columns" are created within a row
-    // Repeat until it has been done eight times
-    // The end result is an eight by eight board
-    for(int row = 0; row <= LENGTH; row++)
+    // An eight by eight board has 64 total squares
+    for(int squares = 0; squares < 64; squares++)
     {
 
-        rowPtr = new QList<ChessPiece>(); // Creates a row
-        board.append(*rowPtr); // Adds row to the board
+        board.append(new ChessPiece());
 
-        // For this row, create eight columns
-        for(int column = 0; column <= LENGTH; column++)
-        {
-            piecePtr = new ChessPiece();
-
-            board[row].append(*piecePtr);
-            qDebug() << board[row].value(column).getPosition() << row << column << endl;
-
-        }
     }
 
 
-    /* Initialises the Initial Positions of the Chess Pieces */
-    // Can't think of a better way to implement this atm
-    // Hard coding tfw
-
-    // Creates a White King and Queen and then a Black King and Queen
-    for(int colour = 1; colour <= 2; colour++)
+    /* Creates all White Pieces first and then all Black pieces
+       and places them on the board */
+    for(int colour = WHITE; colour <= BLACK; colour++)
     {
 
-        Colour pColour;
+        // The rows range is 1-8 (not zero-indexed)
+        // If colour is WHITE (0) row = 1
+        // Else row = 8
+        int row = colour * 7 + 1;
+
+        // Hard coded the placement of pieces onto the first row
+        board.replace(IndexAt(row, 1), new Rook((Colour) colour));
+        board.replace(IndexAt(row, 2), new Knight((Colour) colour));
+        board.replace(IndexAt(row, 3), new Bishop((Colour) colour));
+        board.replace(IndexAt(row, 4), new Queen((Colour) colour));
+        board.replace(IndexAt(row, 5), new King((Colour) colour));
+        board.replace(IndexAt(row, 6), new Bishop((Colour) colour));
+        board.replace(IndexAt(row, 7), new Knight((Colour) colour));
+        board.replace(IndexAt(row, 8), new Rook((Colour) colour));
 
 
-        if (colour == WHITE)
+        // Pawns start on the second row for White and seventh row for Black
+        (colour == WHITE) ? row = 2 : row = 7;
+
+        // There are eight pawns all in the same row in Chess for both players
+        for(int pawn = 1; pawn <= 8; pawn++)
         {
 
-            pColour = WHITE;
-            colourPtr = &whitePieces;
-
-        }
-
-        else if (colour == BLACK)
-        {
-
-            pColour = BLACK;
-            colourPtr = &blackPieces;
-
-        }
-
-        else
-        {
-            std::cout << "The colour is not White or Black!!" << std::endl;
-        }
-
-        piecePtr = new King(pColour); // Int can convert to bool ? well, it works
-        colourPtr->append(*piecePtr);
-
-        piecePtr = new Queen(pColour);
-        colourPtr->append(*piecePtr);
-
-
-    }
-
-    /* Creates two White and Black Rooks, Knights and Bishops */
-    // Creates two Rooks, Knights and Bishops
-    for(int noPieces = 0; noPieces < 2; noPieces++)
-    {
-        // Creates one Rook, Knight and Bishop of each colour
-        for(int colour = 1; colour <= 2; colour++)
-        {
-
-            Colour pColour;
-
-
-            if (colour == WHITE)
-            {
-
-                pColour = WHITE;
-                colourPtr = &whitePieces;
-
-            }
-
-            else if (colour == BLACK)
-            {
-
-                pColour = BLACK;
-                colourPtr = &blackPieces;
-
-            }
-
-
-            piecePtr = new Rook(pColour);
-            colourPtr->append(*piecePtr);
-
-            piecePtr = new Knight(pColour);
-            colourPtr->append(*piecePtr);
-
-            piecePtr = new Bishop(pColour);
-            colourPtr->append(*piecePtr);
-
+            board.replace(IndexAt(row, pawn), new Pawn((Colour) colour));
 
         }
     }
-
-    /* Creates eight White and Black Pawns */
-    // Creates eight Pawns
-    for(int noPieces = 0; noPieces < 8; noPieces++)
-    {
-        // Creates a Pawn of each colour
-        for(int colour = 1; colour <= 2; colour++)
-        {
-
-            Colour pColour;
+}
 
 
-            if (colour == WHITE)
-            {
+// Support function that converts between a non-index row and column number
+// into the zero-index of the pseudo-multidimensional QList.
+int Board::IndexAt(int row, int column)
+{
 
-                pColour = WHITE;
-                colourPtr = &whitePieces;
-
-            }
-
-            else if (colour == BLACK)
-            {
-
-                pColour = BLACK;
-                colourPtr = &blackPieces;
-
-            }
-
-
-            piecePtr = new Pawn(pColour);
-            colourPtr->append(*piecePtr);
-
-
-        }
-    }
-
-    colourPtr = &whitePieces;
-    piecePtr = *colourPtr->indexOf(&)
-    board[0].insert(0, *colourPtr->value(0, Pawn));
-
-
+    // There are eight "columns" in a row
+    // Eg The first column of row three is at eight multiplied by three
+    // The subtraction of one from each parameter is to account for zero-index
+    return (8 * (row - 1)) + (column - 1);
 
 }
+
+

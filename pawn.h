@@ -13,6 +13,7 @@ public:
     Pawn();
     Pawn(Colour colour);
     QString getPosition();
+    Pawn* getPiece();
 
 
 private:

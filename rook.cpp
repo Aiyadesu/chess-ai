@@ -19,3 +19,14 @@ Rook::Rook(Colour colour)
     value = ROOK;
 
 }
+
+Rook* Rook::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}
+
+void Rook::getColour()
+{
+    std::cout << "Colour is " << this->colour << std::endl;
+}

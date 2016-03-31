@@ -17,6 +17,12 @@ Bishop::Bishop(Colour colour)
     position = NO_POSITION;
     this->colour = colour;
     value = BISHOP;
-    id =
 
 }
+
+Bishop* Bishop::getPiece()
+{
+    std::cout << "I am a " << this->colour << " of " << this->value << std::endl;
+    return this;
+}
+
