@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     queen.cpp \
     rook.cpp \
     knight.cpp \
-    bishop.cpp
+    bishop.cpp \
+    blanksquare.cpp
 
 HEADERS += \
     chesspiece.h \
@@ -25,6 +26,7 @@ HEADERS += \
     queen.h \
     rook.h \
     knight.h \
-    bishop.h
+    bishop.h \
+    blanksquare.h
 
 QMAKE_CXXFLAGS += -std=c++0x

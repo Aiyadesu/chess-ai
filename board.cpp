@@ -1,6 +1,7 @@
 #include "board.h"
 #include "chesspiece.h"
 #include "bishop.h"
+#include "blanksquare.h"
 #include "king.h"
 #include "knight.h"
 #include "pawn.h"
@@ -39,7 +40,7 @@ Board::Board()
     for(int squares = 0; squares < 64; squares++)
     {
 
-        board.append(new ChessPiece());
+        board.append(new BlankSquare());
 
     }
 
