@@ -6,8 +6,11 @@ BlankSquare::BlankSquare()
     position = NO_POSITION;
     colour = COLOURLESS;
     value = WORTHLESS;
+    emit createdBlankSquare();
+
 
 }
+
 
 
 BlankSquare* BlankSquare::getPiece()
@@ -17,3 +20,9 @@ BlankSquare* BlankSquare::getPiece()
     return this;
 
 }
+
+Value BlankSquare::getValue()
+{
+    return value;
+}
+

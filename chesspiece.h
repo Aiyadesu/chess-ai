@@ -27,7 +27,7 @@ enum Value {
 };
 
 
-class ChessPiece
+class ChessPiece : public QObject
 
 {
 

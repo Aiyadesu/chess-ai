@@ -7,16 +7,23 @@
 class BlankSquare : public ChessPiece
 {
 
-public:
+    Q_OBJECT
+    signals:
+        void createdBlankSquare();
 
-    BlankSquare();
-    BlankSquare* getPiece();
+    public:
 
-private:
+        BlankSquare();
+        BlankSquare* getPiece();
+        Value getValue();
 
-    QString position;
-    Colour colour;
-    Value value;
+
+    private:
+
+        QString position;
+        Colour colour;
+        Value value;
+
 
 };
 

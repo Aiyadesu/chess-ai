@@ -15,7 +15,7 @@ public:
     QString getPosition();
     King* getPiece();
 
-
+// TODO: TEST
 private:
 
     QString position;
