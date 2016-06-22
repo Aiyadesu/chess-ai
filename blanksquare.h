@@ -24,6 +24,8 @@ class BlankSquare : public ChessPiece
         Colour colour;
         Value value;
 
+        // TEST
+
 
 };
 

@@ -26,3 +26,5 @@ Value BlankSquare::getValue()
     return value;
 }
 
+// TEST
+
