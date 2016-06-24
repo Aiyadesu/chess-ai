@@ -16,7 +16,7 @@ Window
 
     visible:  true;
 
-    color: "black";
+    color: "green";
 
     title: "Chess Application";
 
@@ -26,6 +26,8 @@ Window
     {
 
         id: buttonLoadBoard;
+
+        anchors.top: gridChessBoard.bottom;
 
         text: "lose";
 
@@ -40,7 +42,9 @@ Window
         }
     }
 
-
+    /* A GridLayout that will display 64 individual squares of
+     * alternating colours.
+     */
     GridLayout
     {
 
@@ -53,6 +57,11 @@ Window
 
         Layout.fillWidth: true;
         Layout.fillHeight: true;
+
+        anchors.fill: gameWindow;
+        anchors.top: gameWindow.top;
+        anchors.horizontalCenter: gameWindow.width / 2;
+        anchors.verticalCenter: gameWindow.verticalCenter;
 
         // Generates a Grid according to the model and delegate
         Repeater
